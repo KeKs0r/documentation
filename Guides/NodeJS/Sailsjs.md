@@ -144,6 +144,6 @@ Congratulations, you can now see your Sails.js app running at
 [Procfile]: https://www.cloudcontrol.com/dev-center/Platform%20Documentation#buildpacks-and-the-procfile
 [filesystem]: https://www.cloudcontrol.com/dev-center/Platform%20Documentation#non-persistent-filesystem
 [data-storage-addons]: https://www.cloudcontrol.com/dev-center/Add-on%20Documentation/Data%20Storage/
-[get-conf]: https://www.cloudcontrol.com/dev-center/Guides/Python/Add-on%20credentials
+[get-conf]: https://www.cloudcontrol.com/dev-center/Guides/NodeJS/Add-on%20credentials
 [mysqls]: https://www.cloudcontrol.com/dev-center/Add-on%20Documentation/Data%20Storage/MySQLs
 
