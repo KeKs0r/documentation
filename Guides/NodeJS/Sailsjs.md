@@ -5,13 +5,13 @@
 ## The Example App Explained
 
 ### Get the App
-First, lets clone the example code from Github.
+First, let's clone the example code from Github.
 ~~~bash
 $ git clone https://github.com/cloudControl/nodejs-sails-example-app.git
 $ cd nodejs-sails-example-app
 ~~~
 
-The code from the example repository is ready to be deployed. Lets still go
+The code from the example repository is ready to be deployed. Let's still go
 through the different files and their purpose real quick.
 
 ### Dependency Tracking
