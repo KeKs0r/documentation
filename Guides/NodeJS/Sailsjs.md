@@ -1,6 +1,6 @@
 # Deploying a Sails.js Application
 
-Intro about [Sails.js]
+[Sails.js] is real time [Node.js] MVC framework, designed to mimic pattern of frameworks like [Ruby on Rails].
 
 ## The Example App Explained
 
@@ -90,6 +90,10 @@ module.exports.adapters = {
 };
 ~~~
 
+### Socket.io and websocket support
+
+Client / backend communication is done via [socket.io](http://socket.io/) (websockets), so it is important to use `*.cloudcontrolapp.com` domain instead of `*.cloudcontrolled.com`. For more details please visit our [Websockets documentaion](https://www.cloudcontrol.com/dev-center/Platform%20Documentation#websockets).
+
 ## Pushing and Deploying the App
 
 Choose a unique name to replace the `APP_NAME` placeholder for your application
@@ -116,10 +120,11 @@ $ cctrlapp APP_NAME/default deploy
 ~~~
 
 Congratulations, you can now see your Sails.js app running at
-`http://APP_NAME.cloudcontrolled.com`.
+`http://APP_NAME.cloudcontrolapp.com`.
 
 [Node.js]: http://nodejs.org/
 [Sails.js]: http://sailsjs.org/
+[Ruby on Rails]: http://rubyonrails.org/
 [npm]: https://npmjs.org/
 [cloudControl]: http://www.cloudcontrol.com
 [Procfile]: https://www.cloudcontrol.com/dev-center/Platform%20Documentation#buildpacks-and-the-procfile
