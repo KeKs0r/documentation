@@ -43,17 +43,6 @@ through the different files and their purpose real quick.
 }
 ~~~
 
-[Bower] web dependencies
-`bower.json`:
-~~~json
-{
-    "name": "todomvc-template",
-    "version": "0.0.0",
-    "dependencies": {
-        "todomvc-common": "~0.1.4"
-    }
-}
-~~~
 
 ### Process Type Definition
 cloudControl uses a [Procfile] to know how to start the app's processes.
@@ -69,42 +58,35 @@ followed by the command that starts the app.
 
 ### Production Database
 
-By default, Sails.js uses the hard drive as a persistent object store, using
-the `sails-disk` module.  This is not possible on cloudControl, since the
-filesystem is [not persistent][filesystem]. Instead you have to use a database,
-which you can choose as an Add-on from [the Data Storage
-category][data-storage-addons].
-
 In this tutorial we use the [Shared MySQL Add-on][mysqls]. Have a look at
 `config/adapter.js` so you can find out how to [get the MySQL
 credentials][get-conf] provided by MySQLs Add-on:
 ~~~javascript
 module.exports.adapters = {
 
-  'default': process.env.NODE_ENV || 'disk',
+    'default': process.env.NODE_ENV || 'development',
 
-  disk: {
-    module: 'sails-disk'
-  },
+    development: {
+        module: 'sails-mysql',
+        host: 'localhost',
+        user: 'todouser',
+        password: 'todopass',
+        database: 'todomvc',
+        pool: true,
+        connectionLimit: 2,
+        waitForConnections: true
+    },
 
-  development: {
-    module: 'sails-mysql',
-    host: 'localhost',
-    user: 'todouser',
-    password: 'todopass',
-    database: 'todomvc'
-  },
-
-  production: {
-    module: 'sails-mysql',
-    host: process.env.MYSQLS_HOSTNAME,
-    user: process.env.MYSQLS_USERNAME,
-    password: process.env.MYSQLS_PASSWORD,
-    database: process.env.MYSQLS_DATABASE,
-    pool: true,
-    connectionLimit: 2,
-    waitForConnections: true
-  }
+    production: {
+        module: 'sails-mysql',
+        host: process.env.MYSQLS_HOSTNAME,
+        user: process.env.MYSQLS_USERNAME,
+        password: process.env.MYSQLS_PASSWORD,
+        database: process.env.MYSQLS_DATABASE,
+        pool: true,
+        connectionLimit: 2,
+        waitForConnections: true
+    }
 };
 ~~~
 
@@ -139,11 +121,7 @@ Congratulations, you can now see your Sails.js app running at
 [Node.js]: http://nodejs.org/
 [Sails.js]: http://sailsjs.org/
 [npm]: https://npmjs.org/
-[bower]: http://bower.io/
 [cloudControl]: http://www.cloudcontrol.com
 [Procfile]: https://www.cloudcontrol.com/dev-center/Platform%20Documentation#buildpacks-and-the-procfile
-[filesystem]: https://www.cloudcontrol.com/dev-center/Platform%20Documentation#non-persistent-filesystem
-[data-storage-addons]: https://www.cloudcontrol.com/dev-center/Add-on%20Documentation/Data%20Storage/
 [get-conf]: https://www.cloudcontrol.com/dev-center/Guides/NodeJS/Add-on%20credentials
 [mysqls]: https://www.cloudcontrol.com/dev-center/Add-on%20Documentation/Data%20Storage/MySQLs
-
