@@ -123,6 +123,11 @@ connection by using the `psql` command line client:
 $ psql "host=POSTGRESQLD_HOST dbname=POSTGRESQLD_DATABASE sslmode=require" -U POSTGRESQLD_USERNAME
 ~~~
 
+or alternatively using url:
+~~~bash
+$ psql POSTGRESQLD_URL
+~~~
+
 Replace the uppercase variables with the corresponding values shown by the `addon` command:
 ~~~bash
 $ cctrlapp APP_NAME/DEP_NAME addon postgresqld.OPTION
@@ -133,6 +138,7 @@ Addon                    : postgresqld.small
    POSTGRESQLD_HOST              : SOME_HOST.eu-west-1.rds.amazonaws.com
    POSTGRESQLD_DATABASE          : SOME_DATABASE_NAME
    POSTGRESQLD_PORT              : 5432
+   POSTGRESQLD_URL               : SOME_DATABASE_URL
 ~~~
 
 Similarly, imports and exports are equally simple.
@@ -141,10 +147,18 @@ To **export** your data use the `pg_dump` command:
 ~~~bash
 $ pg_dump "host=POSTGRESQLD_HOST dbname=POSTGRESQLD_DATABASE sslmode=require" -U POSTGRESQLD_USERNAME > PG_DUMP
 ~~~
+or
+~~~bash
+$ pg_dump POSTGRESQLD_URL > PG_DUMP
+~~~
 
 To **import** an sql file into a PostgreSQL database use the following command:
 ~~~bash
 $ psql "host=POSTGRESQLD_HOST dbname=POSTGRESQLD_DATABASE sslmode=require" -U POSTGRESQLD_USERNAME < PG_DUMP
+~~~
+or
+~~~bash
+$ psql POSTGRESQLD_URL < PG_DUMP
 ~~~
 
 [Amazon RDS]: http://aws.amazon.com/rds/
